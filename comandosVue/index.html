@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Bruce</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+</head>
+<body>
+<div id="app">
+    {{text }} <!-- interpolación de datos -->
+    <br>
+    {{ text.toUpperCase() }}  <!-- Mayusculas -->
+    <br>
+    {{ JSON.stringify(alumno)}} <!-- COnversión objeto a json-->
+    <br>
+    {{  }} <!-- -->
+
+</div>
+<script> //intrucciones
+            const vm = Vue.createApp({ //declaraciones de funcionalidad, option API json
+                data(){
+                    return{
+                        text1: "Hello", //sin html
+                        text: " <h1> Saludos!! </h1>"//(con html y directiva )
+
+                        /* alumno: {
+                            Nombre: "Bruce",
+                            ApPaterno: "Zacarías"
+                        }
+                        //variable reactiva
+                            //urlImage: "data:image/jpeg;base64,",
+                            //tipo: "text"
+                        counter: 0 */
+
+                    }
+                },
+                //instrucciones declarativas, de acuerdo a como se describan, y se visualiza en contenedor
+                //directivas= funcionalidad con poco código
+                    //v-text: valores String
+                    //v-once: limita a una vez el cambio de valores (renderizado multiple)
+                    //v-html: muestra valores html
+                    //sentencias <p>
+                //atributos reactivos
+                    //<div></div>
+                    //directivas
+                        //v-bind: manejo de atrib reactivos
+
+                //template: '<div> <img v-bind:src="urlImage" /> <input v-bind:type="tipo" value="click"> </div>'
+                //methods
+                    //v-on:manejo de eventos
+                    //v-model: manipulación de entradas de usuario declarado en data (input)
+
+                    /* methods:{
+                        incrementar(){
+                            this.counter++;
+                            this.mensaje();
+                        },
+                        decrementar(){
+                            //validación
+                            if(this.counter > 0 ){
+                                this.counter--;
+                            }
+                        },
+                        mensaje(){
+                            console.log("Message")
+                        }
+                }, */
+                methods:{
+                    changeInput(e){
+                        this.text1 = e.target.value;
+                    }
+                },
+     //eventos de usuarios
+                template:
+                `<div>
+                    <p> {{ text1 }}</p>
+                    <input type="text" v-model="text1">
+                </div>` /* cambio de v-on a v-model */
+            }).mount("#app")
+    </script>
+</body>
+</html>
